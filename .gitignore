@@ -1,0 +1,23 @@
+# Ambientes virtuais
+venv/
+.env/
+.venv/
+
+# Builds e distribuições
+dist/
+build/
+*.egg-info/
+
+# Cache e metadados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configurações de IDEs (opcional)
+.vscode/
+.idea/
+
+# Arquivos temporários
+*.log
+*.tmp
