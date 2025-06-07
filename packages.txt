@@ -1,3 +1,5 @@
 ffmpeg
 libffi-dev
 libssl-dev
+build-essential
+python3-dev
