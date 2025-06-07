@@ -4,9 +4,11 @@ from pydub import AudioSegment
 from pydub.utils import which
 import streamlit as st
 
-# Forçar ffmpeg se estiver local
-if os.path.exists("ffmpeg.exe"):
-    AudioSegment.converter = which("ffmpeg.exe")
+AudioSegment.converter = "ffmpeg"  # Tenta usar o FFmpeg do sistema
+AudioSegment.ffmpeg = "ffmpeg"     # Garante que o pydub use o FFmpeg instalado
+
+# Testa se o FFmpeg está acessível
+os.system("ffmpeg -version")
 
 st.set_page_config(page_title="Cortador de Áudio 0dB", layout="centered")
 st.title("Cortador de Áudio em 0dB")
