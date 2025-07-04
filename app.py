@@ -4,8 +4,6 @@ from pydub import AudioSegment
 from pydub.utils import which
 import streamlit as st
 
-st.set_option('server.maxUploadSize', 2048)
-
 AudioSegment.converter = "ffmpeg"  # Tenta usar o FFmpeg do sistema
 AudioSegment.ffmpeg = "ffmpeg"     # Garante que o pydub use o FFmpeg instalado
 
