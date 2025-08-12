@@ -57,6 +57,8 @@ if uploaded_file:
             audio = AudioSegment.from_file(uploaded_file)
             total_duration = len(audio)
 
+            sample_duration_ms = 1000.0 / audio.frame_rate
+
             zero_points = find_zero_crossings(audio)
             if not zero_points:
                 st.error("Não foram encontrados pontos com L e R em 0dB!")
@@ -76,9 +78,9 @@ if uploaded_file:
                     if not candidatos:
                         break
                     ponto_real = min(candidatos, key=lambda p: abs(p - proximo))
-                    ponto_offset = ponto_real + offset
+                    ponto_offset = ponto_real + offset + sample_duration_ms
                     if ponto_offset < total_duration:
-                        pontos_corte.append(int(ponto_offset))
+                        pontos_corte.append(ponto_offset)
                     else:
                         break
 
