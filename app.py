@@ -34,18 +34,18 @@ output_dir = "cortes_web"
 os.makedirs(output_dir, exist_ok=True)
 
 @st.cache_data
-def find_zero_crossings(audio_segment):
+def find_zero_crossings(_audio_segment):
     zero_points = []
-    samples = audio_segment.get_array_of_samples()
-    frame_count = len(samples) // audio_segment.channels
+    samples = _audio_segment.get_array_of_samples()
+    frame_count = len(samples) // _audio_segment.channels
 
     for i in range(frame_count):
-        idx = i * audio_segment.channels
+        idx = i * _audio_segment.channels
         left = samples[idx]
-        right = samples[idx + 1] if audio_segment.channels > 1 else left
+        right = samples[idx + 1] if _audio_segment.channels > 1 else left
 
         if abs(left) < 100 and abs(right) < 100:
-            zero_points.append(i * 1000 / audio_segment.frame_rate)
+            zero_points.append(i * 1000 / _audio_segment.frame_rate)
 
     return zero_points
 
